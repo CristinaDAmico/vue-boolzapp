@@ -71,9 +71,25 @@ body {
     background: #fff;
 }
 
-/* sidebar */
+/* SIDEBAR */
 .sidebar {
     flex-basis: 35%;
+}
+
+/* notifiche */
+.notifiche {
+    padding: 10px;
+    background: #a2dffe;
+    align-items: center;
+}
+
+.notifiche > a {
+    background: #f5fcff;
+    border-radius: 50%;
+    padding: 10px;
+    color: #a2dffe;
+    font-size: 20px;
+    margin-right: 15px;
 }
 
 /* MAIN CONTENT*/
