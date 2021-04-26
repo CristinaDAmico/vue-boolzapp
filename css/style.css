@@ -92,6 +92,51 @@ body {
     margin-right: 15px;
 }
 
+/* search */
+.search {
+    padding: 5px;
+    background: #fbfbfb;
+    position: relative;
+}
+
+.search a {
+    position: absolute;
+    position: absolute;
+    top: 7px;
+    padding: 0 20px;
+    border-right: 1px solid;
+    height: 22px;
+}
+
+.search input {
+    height: 23px;
+    width: 100%;
+    padding-left: 65px;
+    border-radius: 3px;
+    border: 1px solid #bfc2c4;
+}
+
+/* lista contatti */
+.contact {
+    width: 100%;
+    align-items: center;
+    border-bottom: 1px solid #bfc2c4;
+}
+
+.contacts img {
+    width: 50px;
+    border-radius: 50%;
+    margin: 10px 20px;  
+} 
+
+.contacts .contact:last-child {
+    border-bottom: none;
+}
+
+.contact:hover {
+    background-color: #bababa;
+}
+
 /* MAIN CONTENT*/
 .content {
     flex-basis: 65%;

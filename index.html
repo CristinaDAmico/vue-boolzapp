@@ -52,9 +52,17 @@
                 </div>
             </div>
             <!-- search -->
-            <input type="text">
+            <div class="search">
+                <a href="#" class="c-light-grey"><i class="fas fa-search"></i></a>
+                <input class="fsize-10" type="text" placeholder="Cerca o inizia una nuova chat">
+            </div>
             <!-- lista contatti -->
-            <div></div>
+            <div class="contacts">
+                <div v-for="contact in contacts" class="contact d-inFlex">
+                    <img :src="'./img/avatar' + contact.avatar + '.jpg'" :alt="contact.name">
+                    <div>{{ contact.name }}</div>
+                </div>
+            </div>
         </aside>
 
         <!-- MAIN CONTENT -->
