@@ -25,8 +25,8 @@
             <div class="header-sidebar d-flex">
                 <!-- Info utente -->
                 <div class="header-left d-inFlex">
-                    <img src="./img/avatar_io.jpg" alt="avatar_io" class="avatar-1">
-                    <div class="nome-contatto fsize-12">Nome utente</div>
+                    <img :src="'./img/avatar' + user.avatar + '.jpg'" :alt="user.name" class="avatar-1">
+                    <div class="nome-contatto fsize-12">{{ user.name }}</div>
                 </div>
                 <!-- settings -->
                 <div class="header-right">
@@ -58,7 +58,11 @@
             </div>
             <!-- lista contatti -->
             <div class="contacts">
-                <div v-for="contact in contacts" class="contact d-inFlex">
+                <div v-for="(contact, index) in contacts" 
+                    class="contact d-inFlex"
+                    :class ="{ active: index === activeContact}"
+                    @click="setActiveContact(index)"
+                >
                     <img :src="'./img/avatar' + contact.avatar + '.jpg'" :alt="contact.name">
                     <div>{{ contact.name }}</div>
                 </div>
@@ -71,9 +75,12 @@
             <section class="content-header d-flex">
                 <!-- Info contatto -->
                 <div class="header-left d-inFlex">
-                    <img src="./img/avatar_1.jpg" alt="avatar_1" class="avatar-1">
+                    <img :src="`./img/avatar${ contacts[activeContact].avatar }.jpg`" 
+                        alt="avatar_1" 
+                        class="avatar-1"
+                    >
                    <div class="info-contatto">
-                        <div class="nome-contatto fsize-12">Michele</div>
+                        <div class="nome-contatto fsize-12">{{ contacts[activeContact].name }}</div>
                         <div class="accesso c-dark-grey fsize-10">Ultimo accesso oggi alle 10.35</div>
                    </div>
                 </div>
@@ -95,13 +102,12 @@
             <!-- MAIN CONTENT chat  -->
             <section class="content-main">
                 <div class="chat d-flex">
-                    <div class="msg inviato">
-                        <div class="fsize-12">Messaggio inviato</div>
-                        <div class="fsize-10 text-right c-grey">10/01/2021 15:50:00</div>
-                    </div>
-                    <div class="msg ricevuto">
-                        <div class="fsize-12">Messaggio ricevuto</div>
-                        <div class="fsize-10 text-right c-grey">10/01/2021 15:50:00</div>
+                    <div v-for="message in contacts[activeContact].messages"
+                        class="msg"
+                        :class="message.status"
+                    >
+                        <div class="fsize-12">{{ message.message }}</div>
+                        <div class="fsize-10 text-right c-grey">{{ message.date }}</div>
                     </div>
                 </div>
             </section>

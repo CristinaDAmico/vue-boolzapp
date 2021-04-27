@@ -121,6 +121,7 @@ body {
     width: 100%;
     align-items: center;
     border-bottom: 1px solid #bfc2c4;
+    cursor: pointer;
 }
 
 .contacts img {
@@ -135,6 +136,10 @@ body {
 
 .contact:hover {
     background-color: #bababa;
+}
+
+.contact.active {
+    background-color: #777e82;
 }
 
 /* MAIN CONTENT*/
@@ -198,12 +203,12 @@ body {
     margin-bottom: 10px;
 } 
 
-.msg.inviato {  
+.msg.sent {  
     background: #ddfabf; 
     align-self: flex-end;
 }
 
-.msg.ricevuto {
+.msg.received {
     background: #fff;   
 }
 

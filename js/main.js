@@ -6,6 +6,12 @@ const app = new Vue ({
     el: '#app',
 
     data: {
+        // Utente 
+        user : {
+            name: 'Cristina',
+            avatar: '_io',
+        },
+        
         // Lista contatti
         contacts: [
             {
@@ -88,10 +94,21 @@ const app = new Vue ({
                         date: '10/01/2020 15:50:00',
                         message: 'Si, ma preferirei andare al cinema',
                         status: 'received'
-                    }
+                    },
                 ],
             },
         ],
+        // Contatto attivo (indice)
+        activeContact: 0
+    },
+    methods: {
+        setActiveContact(index) {
+            console.log(index);
+
+            this.activeContact = index;
+
+            console.log( this.contacts[this.activeContact]);
+        }
     }
 
 });
