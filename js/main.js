@@ -104,8 +104,11 @@ const app = new Vue ({
         activeContact: 0,
         // new msg
         newMessageText:'',
+        // Cerca contatto
+        search:"",
     },
     methods: {
+        // CONTATTO ATTIVO
         setActiveContact(index) {
             //console.log(index);
 
@@ -113,6 +116,7 @@ const app = new Vue ({
 
             //console.log( this.contacts[this.activeContact]);
         },
+        // INSERIRE UN NUOVO MESSAGGIO
         insertMessage() {
             if(this.newMessageText !== '') {
                 // ref array msg attuale
@@ -142,6 +146,16 @@ const app = new Vue ({
                 }, 1000);
 
             }
+        },
+        // CERCA FRA LA LISTA CONTATTI
+        searchContact() {
+            this.contacts.forEach( contact => {
+                if ( contact.name.toLowerCase().includes(this.search.toLowerCase()) ) {
+                   contact.visible = true;
+                } else {
+                   contact.visible = false;
+                }
+            });
         }
     }
 

@@ -166,6 +166,8 @@ body {
 .content-main {
     flex-grow: 1;
     padding: 30px 60px;
+    overflow-y: auto;
+    margin-bottom: 20px;
 }
 
 .content-footer {
@@ -222,9 +224,5 @@ body {
     padding: 13px;
     border: none;
     border-radius: 5px
-}
-
-.content-footer input:focus {
-    outline: none;
 }
 

@@ -54,7 +54,13 @@
             <!-- search -->
             <div class="search">
                 <a href="#" class="c-light-grey"><i class="fas fa-search"></i></a>
-                <input class="fsize-10" type="text" placeholder="Cerca o inizia una nuova chat">
+                <input 
+                    class="fsize-10" 
+                    type="text" 
+                    placeholder="Cerca o inizia una nuova chat"
+                    v-model.trim="search"
+                    @keyup="searchContact"
+                >
             </div>
             <!-- lista contatti -->
             <div class="contacts">
@@ -62,6 +68,7 @@
                     class="contact d-inFlex"
                     :class ="{ active: index === activeContact}"
                     @click="setActiveContact(index)"
+                    v-show="contact.visible == true"
                 >
                     <img :src="'./img/avatar' + contact.avatar + '.jpg'" :alt="contact.name">
                     <div>{{ contact.name }}</div>
