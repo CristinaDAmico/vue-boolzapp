@@ -1,6 +1,8 @@
 /***********************************
         BOOLZAPP - Vue js
 ***********************************/
+// Day JS
+dayjs.extend(dayjs_plugin_customParseFormat);
 
 const app = new Vue ({
     el: '#app',
@@ -99,15 +101,47 @@ const app = new Vue ({
             },
         ],
         // Contatto attivo (indice)
-        activeContact: 0
+        activeContact: 0,
+        // new msg
+        newMessageText:'',
     },
     methods: {
         setActiveContact(index) {
-            console.log(index);
+            //console.log(index);
 
             this.activeContact = index;
 
-            console.log( this.contacts[this.activeContact]);
+            //console.log( this.contacts[this.activeContact]);
+        },
+        insertMessage() {
+            if(this.newMessageText !== '') {
+                // ref array msg attuale
+                const activeMessages = this.contacts[this.activeContact].messages;
+
+                // creare nuovo messaggio in array messages
+                activeMessages.push(
+                    {
+                        message: this.newMessageText,
+                        date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
+                        status: 'sent'
+                    }
+                );
+                // Clean up
+                this.newMessageText = '';
+
+                //Auto reply
+                setTimeout(() => {
+
+                    activeMessages.push(
+                        {
+                            message: 'Ok!',
+                            date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
+                            status: 'received'
+                        }
+                    );
+                }, 1000);
+
+            }
         }
     }
 
